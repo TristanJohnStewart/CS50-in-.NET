@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS50.Mario.Original", "src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS50.Tideman.Original", "src\CS50.Tideman\Original\CS50.Tideman.Original\CS50.Tideman.Original.csproj", "{557A76AA-8BF0-486B-BCAD-D780452A9FEE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CE09DCE7-DC9C-48A5-9D6F-7BDD22F66E57}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "original", "original", "{8AAC09FE-3323-4445-93D1-4B4B36CB60B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +40,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DBF9C77C-6A6A-4DE8-A8A8-D218057DA21A} = {8AAC09FE-3323-4445-93D1-4B4B36CB60B7}
+		{E9EAEE01-C8BB-4ABE-828D-B4B52A4B6474} = {8AAC09FE-3323-4445-93D1-4B4B36CB60B7}
+		{968486AE-CA38-42F6-B9E7-5E2F9DCCF519} = {8AAC09FE-3323-4445-93D1-4B4B36CB60B7}
+		{557A76AA-8BF0-486B-BCAD-D780452A9FEE} = {8AAC09FE-3323-4445-93D1-4B4B36CB60B7}
+		{8AAC09FE-3323-4445-93D1-4B4B36CB60B7} = {CE09DCE7-DC9C-48A5-9D6F-7BDD22F66E57}
 	EndGlobalSection
 EndGlobal
