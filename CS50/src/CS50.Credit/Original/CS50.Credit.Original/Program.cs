@@ -61,7 +61,12 @@
                 }
                 else
                 {
-                    checkSum += 2 * (int)char.GetNumericValue(cardString[multiplicationIndex]);
+                    int multipliedDigit = 2 * (int)char.GetNumericValue(cardString[multiplicationIndex]);
+                    if (multipliedDigit > 9)
+                    {
+                        multipliedDigit -= 9;
+                    }
+                    checkSum += multipliedDigit;
                     multiplicationIndex -= 2;
                 }
             }
