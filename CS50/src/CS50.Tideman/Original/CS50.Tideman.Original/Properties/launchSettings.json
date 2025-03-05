@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "CS50.Tideman.Original": {
+      "commandName": "Project",
+      "commandLineArgs": "boop test tres"
+    },
+    "WSL": {
+      "commandName": "WSL2",
+      "distributionName": ""
+    }
+  }
+}
