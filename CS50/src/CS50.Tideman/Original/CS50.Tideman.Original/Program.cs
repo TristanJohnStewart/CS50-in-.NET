@@ -1,4 +1,8 @@
-﻿namespace CS50.Tideman.Original
+﻿using Microsoft.VisualBasic;
+using System.Runtime.CompilerServices;
+using System.Xml.Linq;
+
+namespace CS50.Tideman.Original
 {
     public class Program
     {
@@ -11,7 +15,7 @@
                 Environment.Exit(0);
             }
 
-            List<string> candidateNamess = [.. args];
+            List<string> candidateNames = [.. args];
 
             int numberOfVoters = 0;
             while (true)
@@ -24,73 +28,93 @@
                 }
             }
 
-            // 1st loop through list of candidates, selecting the candidate for first half of the ranked pair match off
-            // (1st loop refered to as i)
-            // (candidate 1 refered to as #1)
-            // 
-            // for loop i = 0
-            // while i is less than length
-            // i++ at the end of the loop
+            // assigning ranked pairings
+            List<RankedPair> rankedPairs = new();
+            for (int i = 0; i < length; i++)
+            {
+                for (int j = i + 1; j < length; j++)
+                {
+                    rankedPairs.Add(new RankedPair(candidateNames[i], 0, candidateNames[j], 0, null));
+                }
+            }
 
-                // 2nd loop going through list of candidates again to select the candidate for the 2nd half of the pairing 
-                // (2nd loop refered to as j)
-                // (candidate 2 refered to as #2)
-                //
-                // for loop j = i + 1
-                // while j is less than length
-                // j++ at the end of the loop
-
-
-            // if i equals j then skip
-            // (this is because they would be selecting the same candidate
-            //  we don't need a match up of a candidate vs themself)
-
-            // if #1 & #2 already have a matchup 
-            // i.e. if we're checking for beta (#1) and alpha (#2)
-            // we should check to see if #2 vs #1 is already listed
-            // with the method I'm using we know that if #1 comes after #2 in the list, then we should skip
-            // this is because we do the matchups of AvsB, AvsC, AvsD, etc. Then move onto B once we've hit the end of the list for Avs?.
-            // Where we start at the beginning of the list again.
-            // But we already have AvsB so we don't need and we don't want BvsB either.
-            // So we start the new list at the candidate listed immediately after the current ?
+            int listLength = rankedPairs.Count;
 
             for (int i = 0; i < numberOfVoters; i++) 
             {
                 for (int j = 0; j < length; j++)
                 {
                     Console.WriteLine("Rank {0}:", j);
-                    
-                    //Console.ReadLine();
+                    string? votee = Console.ReadLine();
+
+                    if (string.IsNullOrEmpty(votee))
+                    {
+                        continue;
+                    }
+
+                    for (int k = 0; k < listLength; k++)
+                    {
+                        //if (votee == rankedPairs[k].CandidateOneName || 
+                        //    votee == rankedPairs[k].CandidateTwoName)
+                        //{
+
+                        //}
+
+                        // check if vote is valid
+                        // (see if string inputted matches string of any candidates
+                        //  force both strings to upper to check for name similarities)
+                        // if voteName equals rankedPairs[
+                    }
                 }
-                // Console.WriteLine
+                Console.WriteLine("");
             }       
+        }
 
-            // each voter will write in a name 
+        public class RankedPair
+        {
+            private string candidateOneName;
+            private int candidateOneVotes;
 
-            // we need to hold the data of each candidate pairing
-            // i.e. with 3 candidates
-            // alpha vs beta
-            // alpha vs charlie
-            // beta vs charlie
+            private string candidateTwoName;
+            private int candidateTwoVotes;
 
-            // i.e. with 4
-            // alpha vs beta
-            // alpha vs charlie
-            // alpha vs delta
-            // beta vs charlie
-            // beta vs delta
-            // charlie vs delta
+            private string? winner;
 
-            // i.e. with 5 
-            // alpha vs beta
-            // alpha vs charlie
-            // alpha vs delta
-            // alpha vs fred
-            // beta vs charlie
-            // beta vs delta
-            // beta vs fred
-            // charlie vs delta
-            // charlie vs fred
+            public RankedPair(string candidateOneName, int candidateOneVotes, string candidateTwoName, int candidateTwoVotes, string? winner)
+            {
+                this.candidateOneName = candidateOneName;
+                this.candidateOneVotes = candidateOneVotes;
+                this.candidateTwoName = candidateTwoName;
+                this.candidateTwoVotes = candidateTwoVotes;
+                this.winner = winner;
+            }
+
+            public string CandidateOneName
+            {
+                get { return candidateOneName; }
+                set { candidateOneName = value; }
+            }
+
+            public int CandidateOneVotes
+            {
+                get { return candidateOneVotes; }
+                set { candidateOneVotes = value; }
+            }
+            public string CandidateTwoName
+            {
+                get { return candidateTwoName; }
+                set { candidateTwoName = value; }
+            }
+            public int CandidateTwoVotes
+            {
+                get { return candidateTwoVotes; }
+                set { candidateTwoVotes = value; }
+            }
+            public string Winner
+            {
+                get { return winner; }
+                set { winner = value; }
+            }
         }
     }
 }
