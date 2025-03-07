@@ -40,8 +40,14 @@ namespace CS50.Tideman.Original
 
             int listLength = rankedPairs.Count;
 
-            for (int i = 0; i < numberOfVoters; i++) 
+            for (int i = 0; i < numberOfVoters; i++)
             {
+                bool[] rankingRecieved = new bool[listLength];
+                for (int j = 0; j < listLength; j++)
+                {
+                    rankingRecieved[j] = false;
+                }
+
                 for (int j = 0; j < length; j++)
                 {
                     Console.WriteLine("Rank {0}:", j);
@@ -49,25 +55,38 @@ namespace CS50.Tideman.Original
 
                     if (string.IsNullOrEmpty(votee))
                     {
-                        continue;
+                        Console.WriteLine("Invalid Vote.");
+                        return;
                     }
+                    votee = votee.ToUpper();
 
                     for (int k = 0; k < listLength; k++)
                     {
-                        //if (votee == rankedPairs[k].CandidateOneName || 
-                        //    votee == rankedPairs[k].CandidateTwoName)
-                        //{
-
-                        //}
-
-                        // check if vote is valid
-                        // (see if string inputted matches string of any candidates
-                        //  force both strings to upper to check for name similarities)
-                        // if voteName equals rankedPairs[
+                        // if the pairing has already recieved rankings from this voter
+                        // skip the pairing onto next loop iteration
+                        if (rankingRecieved[k] == true)
+                        {
+                            continue;
+                        }
+                        // elseif if the pairing has a name match for one of the candidates 
+                        // increase the point for said candidate by 1
+                        else if (votee == rankedPairs[k].CandidateOneName.ToUpper())
+                        {
+                            rankedPairs[k].CandidateOneVotes++;
+                            rankingRecieved[k] = true;
+                            continue;
+                        }
+                        else if (votee == rankedPairs[k].CandidateTwoName.ToUpper())
+                        {
+                            rankedPairs[k].CandidateTwoVotes++;
+                            rankingRecieved[k] = true;
+                            continue;
+                        }
                     }
                 }
+
                 Console.WriteLine("");
-            }       
+            }
         }
 
         public class RankedPair

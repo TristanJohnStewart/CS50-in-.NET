@@ -2,7 +2,7 @@
   "profiles": {
     "CS50.Tideman.Original": {
       "commandName": "Project",
-      "commandLineArgs": "boop test tres"
+      "commandLineArgs": "Alpha Beta Charlie"
     },
     "WSL": {
       "commandName": "WSL2",
