@@ -40,6 +40,7 @@ namespace CS50.Tideman.Original
 
             int listLength = rankedPairs.Count;
 
+            // getting ranked preferences from voters
             for (int i = 0; i < numberOfVoters; i++)
             {
                 bool[] rankingRecieved = new bool[listLength];
@@ -84,9 +85,23 @@ namespace CS50.Tideman.Original
                         }
                     }
                 }
-
                 Console.WriteLine("");
             }
+
+            // sort rankedPairs in decreasing order of margin of victory
+            // loop (i) to select the index where the new rankedPair will be shifted to,
+            // and the index for the present for the new rankedPair to resort
+                // loop (j) to find the rankedPair that will be shifted
+
+            for (int i = 0; i < listLength; i++)
+            {
+                Console.WriteLine("Index: " + i + " #1 " + rankedPairs[i].CandidateOneName + " Votes: " + rankedPairs[i].CandidateOneVotes + " vs #2 " + rankedPairs[i].CandidateTwoName + " Votes: " + rankedPairs[i].CandidateTwoVotes);
+            }
+
+            // lock in rankedPairs
+                // check for cycle
+
+            // print winner
         }
 
         public class RankedPair
